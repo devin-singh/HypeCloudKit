@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 
 struct HypeStrings {
-    fileprivate static let recordTypeKey = "Hype"
+    static let recordTypeKey = "Hype"
     fileprivate static let bodyKey = "body"
     fileprivate static let timestampKey = "timestamp"
 }
