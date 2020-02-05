@@ -71,7 +71,7 @@ extension HypeListViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Alert Controller
 
 extension HypeListViewController {
-    func presentAddHypeAlert() {
+    func presentAddHypeAlert(for hype: Hype?) {
         let alertController = UIAlertController(title: "Get Hype!", message: "What is Hype may never die", preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.delegate = self
@@ -80,6 +80,14 @@ extension HypeListViewController {
         
         let addHypeAction = UIAlertAction(title: "Send", style: .default) { (_) in
             guard let text = alertController.textFields?.first?.text, !text.isEmpty else { return }
+            
+            if let hype = hype {
+                hype.body = text
+                HypeController.shared.update(hype) { (result) in
+                    self.updateViews()
+                }
+            }
+            
             HypeController.shared.saveHype(with: text) { (result) in
                 switch result {
                 case .success(let hype):

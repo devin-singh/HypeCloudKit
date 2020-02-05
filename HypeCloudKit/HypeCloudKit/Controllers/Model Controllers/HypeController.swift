@@ -58,4 +58,45 @@ class HypeController {
             completion(.success(hypes))
         }
     }
+    
+    func update(_ hype: Hype, completion: @escaping (Result<Hype, HypeError>) -> Void) {
+        let record = CKRecord(hype: hype)
+        
+        // Create an Operation
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        // Set the properties on the operation
+        operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
+        operation.modifyRecordsCompletionBlock = { records, _, error in
+            if let error = error {
+                return completion(.failure(.ckError(error)))
+            }
+            
+            guard let record = records?.first, let updatedHype = Hype(ckRecord: record) else { return completion(.failure(.couldNotUnwrap))}
+            
+            completion(.success(updatedHype))
+        }
+        publicDB.add(operation)
+    }
+    
+    func delete(_ hype: Hype, completion: @escaping (Result<Bool, HypeError>) -> Void) {
+        
+        let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [hype.recordID])
+        
+        operation.savePolicy = .changedKeys
+        operation.qualityOfService = .userInteractive
+        
+        operation.modifyRecordsCompletionBlock = { records, _, error in
+            if let error = error {
+                completion(.failure(.ckError(error)))
+            }
+            
+            if records?.count == 0 {
+                completion(.success(true))
+            }else{
+                return completion(.failure(.unexpectedRecordsFound))
+            }
+        }
+    }
+    
 }
