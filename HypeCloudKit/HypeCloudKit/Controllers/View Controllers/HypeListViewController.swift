@@ -69,6 +69,9 @@ extension HypeListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hype = HypeController.shared.hypes[indexPath.row]
+        
+        guard hype.userReference?.recordID == UserController.shared.currentUser?.recordID else { return }
+        
         presentAddHypeAlert(for: hype)
     }
     

@@ -21,7 +21,11 @@ class HypeController {
     
     func saveHype(with bodyText: String, completion: @escaping (Result<Hype?, HypeError>) -> Void) {
         
-        let newHype = Hype(body: bodyText)
+        guard let currentUser = UserController.shared.currentUser else { return completion(.failure(.noUserLoggedIn)) }
+        
+        let reference = CKRecord.Reference(recordID: currentUser.recordID, action: .none)
+        
+        let newHype = Hype(body: bodyText, userReference: reference)
         
         let hypeRecord = CKRecord(hype: newHype)
         
@@ -60,6 +64,9 @@ class HypeController {
     }
     
     func update(_ hype: Hype, completion: @escaping (Result<Hype, HypeError>) -> Void) {
+        
+        guard hype.userReference?.recordID == UserController.shared.currentUser?.recordID else { return completion(.failure(.unexpectedRecordsFound)) }
+        
         let record = CKRecord(hype: hype)
         
         // Create an Operation
@@ -80,6 +87,8 @@ class HypeController {
     }
     
     func delete(_ hype: Hype, completion: @escaping (Result<Bool, HypeError>) -> Void) {
+        
+        guard hype.userReference?.recordID == UserController.shared.currentUser?.recordID else { return completion(.failure(.unexpectedRecordsFound)) }
         
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [hype.recordID])
         

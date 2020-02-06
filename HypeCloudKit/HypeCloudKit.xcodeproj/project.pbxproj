@@ -21,6 +21,8 @@
 		659102EF23EC7D7100662EB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659102EE23EC7D7100662EB3 /* User.swift */; };
 		659102F123EC849600662EB3 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659102F023EC849600662EB3 /* UserModelController.swift */; };
 		659102F423EC863F00662EB3 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659102F323EC863F00662EB3 /* UserError.swift */; };
+		659102F623EC9FDC00662EB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659102F523EC9FDC00662EB3 /* SignUpViewController.swift */; };
+		659102F923ECA19300662EB3 /* HypeList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 659102F723ECA19300662EB3 /* HypeList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		659102EE23EC7D7100662EB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		659102F023EC849600662EB3 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		659102F323EC863F00662EB3 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		659102F523EC9FDC00662EB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		659102F823ECA19300662EB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HypeCloudKit/Views/Base.lproj/HypeList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				6540AC5423E9DFE5009F9A46 /* Main.storyboard */,
+				659102F723ECA19300662EB3 /* HypeList.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				653B771F23E9F924005572DD /* HypeListViewController.swift */,
+				659102F523EC9FDC00662EB3 /* SignUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659102F923ECA19300662EB3 /* HypeList.storyboard in Resources */,
 				6540AC5B23E9DFE6009F9A46 /* LaunchScreen.storyboard in Resources */,
 				6540AC5823E9DFE6009F9A46 /* Assets.xcassets in Resources */,
 				6540AC5623E9DFE5009F9A46 /* Main.storyboard in Resources */,
@@ -229,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659102F623EC9FDC00662EB3 /* SignUpViewController.swift in Sources */,
 				653B771E23E9EFC9005572DD /* HypeError.swift in Sources */,
 				653B772223EA0D4F005572DD /* DateExtension.swift in Sources */,
 				6540AC4F23E9DFE5009F9A46 /* AppDelegate.swift in Sources */,
@@ -259,6 +267,14 @@
 				6540AC5A23E9DFE6009F9A46 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		659102F723ECA19300662EB3 /* HypeList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				659102F823ECA19300662EB3 /* Base */,
+			);
+			name = HypeList.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
