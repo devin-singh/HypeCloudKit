@@ -18,6 +18,7 @@
 		6540AC5623E9DFE5009F9A46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6540AC5423E9DFE5009F9A46 /* Main.storyboard */; };
 		6540AC5823E9DFE6009F9A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6540AC5723E9DFE6009F9A46 /* Assets.xcassets */; };
 		6540AC5B23E9DFE6009F9A46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6540AC5923E9DFE6009F9A46 /* LaunchScreen.storyboard */; };
+		659102EF23EC7D7100662EB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659102EE23EC7D7100662EB3 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		6540AC5723E9DFE6009F9A46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6540AC5A23E9DFE6009F9A46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6540AC5C23E9DFE6009F9A46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		659102EE23EC7D7100662EB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				653B771923E9E6BE005572DD /* Hype.swift */,
 				653B771D23E9EFC9005572DD /* HypeError.swift */,
 				653B772123EA0D4F005572DD /* DateExtension.swift */,
+				659102EE23EC7D7100662EB3 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				653B772223EA0D4F005572DD /* DateExtension.swift in Sources */,
 				6540AC4F23E9DFE5009F9A46 /* AppDelegate.swift in Sources */,
 				653B772023E9F924005572DD /* HypeListViewController.swift in Sources */,
+				659102EF23EC7D7100662EB3 /* User.swift in Sources */,
 				653B771C23E9EEA3005572DD /* HypeController.swift in Sources */,
 				6540AC5123E9DFE5009F9A46 /* SceneDelegate.swift in Sources */,
 				653B771A23E9E6BE005572DD /* Hype.swift in Sources */,

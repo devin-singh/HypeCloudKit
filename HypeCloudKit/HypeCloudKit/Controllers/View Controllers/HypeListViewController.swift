@@ -9,7 +9,7 @@
 import UIKit
 
 class HypeListViewController: UIViewController  {
-
+    
     @IBOutlet weak var hypeTableView: UITableView!
     
     override func viewDidLoad() {
@@ -46,10 +46,10 @@ class HypeListViewController: UIViewController  {
     // MARK: - Actions
     
     @IBAction func composeButtonTapped(_ sender: Any) {
-        presentAddHypeAlert()
+        presentAddHypeAlert(for: nil)
     }
     
-
+    
 }
 
 extension HypeListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -65,6 +65,32 @@ extension HypeListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = hype.timestamp.formatToString()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let hype = HypeController.shared.hypes[indexPath.row]
+        presentAddHypeAlert(for: hype)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let hypeToDelete = HypeController.shared.hypes[indexPath.row]
+            guard let index = HypeController.shared.hypes.firstIndex(of: hypeToDelete) else { return }
+            
+            HypeController.shared.delete(hypeToDelete) { (result) in
+                switch result {
+                case .success(let success):
+                    if success {
+                        HypeController.shared.hypes.remove(at: index)
+                        DispatchQueue.main.async {
+                            tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    }
+                case .failure(let error):
+                    print(error.errorDescription ?? error.localizedDescription)
+                }
+            }
+        }
     }
 }
 
@@ -86,16 +112,16 @@ extension HypeListViewController {
                 HypeController.shared.update(hype) { (result) in
                     self.updateViews()
                 }
-            }
-            
-            HypeController.shared.saveHype(with: text) { (result) in
-                switch result {
-                case .success(let hype):
-                    guard let hype = hype else { return }
-                    HypeController.shared.hypes.insert(hype, at: 0)
-                    self.updateViews()
-                case .failure(let error):
-                    print(error.errorDescription ?? "Unable to display error")
+            }else{
+                HypeController.shared.saveHype(with: text) { (result) in
+                    switch result {
+                    case .success(let hype):
+                        guard let hype = hype else { return }
+                        HypeController.shared.hypes.insert(hype, at: 0)
+                        self.updateViews()
+                    case .failure(let error):
+                        print(error.errorDescription ?? "Unable to display error")
+                    }
                 }
             }
         }

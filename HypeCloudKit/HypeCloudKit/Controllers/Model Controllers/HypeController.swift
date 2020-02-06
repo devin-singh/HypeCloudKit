@@ -96,7 +96,32 @@ class HypeController {
             }else{
                 return completion(.failure(.unexpectedRecordsFound))
             }
+            
         }
+        publicDB.add(operation)
     }
     
+    func subscribeForRemoteNotifications(completion: @escaping (_ error: Error?) -> Void) {
+        
+        let predicate = NSPredicate(value: true)
+        
+        let subscription = CKQuerySubscription(recordType: HypeStrings.recordTypeKey, predicate: predicate, options: .firesOnRecordCreation)
+        
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.title = "CHOO CHOO"
+        notificationInfo.alertBody = "Can't Stop the Hype Train!"
+        notificationInfo.shouldBadge = true
+        notificationInfo.soundName = "default"
+        
+        subscription.notificationInfo = notificationInfo
+        
+        publicDB.save(subscription) { (_, error) in
+            
+            if let error = error {
+                completion(error)
+            }
+            
+            completion(nil)
+        }
+    }
 }
