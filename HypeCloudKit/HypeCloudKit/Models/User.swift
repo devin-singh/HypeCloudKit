@@ -13,7 +13,7 @@ struct UserStrings {
     static let recordTypeKey = "User"
     fileprivate static let usernameKey = "username"
     fileprivate static let bioKey = "bio"
-    fileprivate static let userRefKey = "appleUserRef"
+    static let userRefKey = "appleUserRef"
 }
 
 class User {
