@@ -37,7 +37,7 @@ extension User {
         
         guard let username = ckRecord[UserStrings.usernameKey] as? String, let bio = ckRecord[UserStrings.bioKey] as? String, let appleUserRef = ckRecord[UserStrings.userRefKey] as? CKRecord.Reference else { return nil }
         
-        self.init(username: username, bio: bio, appleUserRef: appleUserRef)
+        self.init(username: username, bio: bio, recordID: ckRecord.recordID, appleUserRef: appleUserRef)
     }
 }
 
